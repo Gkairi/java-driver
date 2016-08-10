@@ -2,6 +2,8 @@
 
 ### 3.0.4 (in progress)
 
+- [improvement] JAVA-1261: Throw error when attempting to page in I/O thread.
+
 
 ### 3.0.3
 
