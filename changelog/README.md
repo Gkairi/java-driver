@@ -2,6 +2,7 @@
 
 ### 3.0.4 (in progress)
 
+- [improvement] JAVA-1262: Use ParseUtils for quoting & unquoting.
 
 ### 3.0.3
 
