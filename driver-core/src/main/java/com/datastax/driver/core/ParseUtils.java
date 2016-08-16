@@ -477,7 +477,7 @@ public abstract class ParseUtils {
      * @return A quoted empty string.
      */
     private static String emptyQuoted(char quoteChar) {
-        // don't handle non quote characters, this is done so the these are interned and doesn't create
+        // don't handle non quote characters, this is done so that these are interned and don't create
         // repeated empty quoted strings.
         assert quoteChar == '"' || quoteChar == '\'';
         if (quoteChar == '"')
