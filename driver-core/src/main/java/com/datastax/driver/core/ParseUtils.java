@@ -507,6 +507,10 @@ public abstract class ParseUtils {
                 ++nbMatch;
         } while (start != -1);
 
+        // no quotes found that need to be escaped, simply surround in quotes and return.
+        if (nbMatch == 0)
+            return quoteChar + text + quoteChar;
+
         // 2 for beginning and end quotes.
         // length for original text
         // nbMatch for escape characters to add to quotes to be escaped.
@@ -549,6 +553,10 @@ public abstract class ParseUtils {
             if (start != -1 && start != text.length() - 2)
                 ++nbMatch;
         } while (start != -1);
+
+        // no escaped quotes found, simply remove surrounding quotes and return.
+        if (nbMatch == 0)
+            return text.substring(1, text.length() - 1);
 
         // length of the new string will be its current length - the number of occurrences.
         int newLength = text.length() - nbMatch - 2;
