@@ -554,18 +554,22 @@ public abstract class ParseUtils {
         int newLength = text.length() - nbMatch - 2;
         char[] result = new char[newLength];
         int newIdx = 0;
+        // track whenever a quoteChar is encountered and the previous character is not a quoteChar.
         boolean firstFound = false;
         for (int i = 1; i < text.length() - 1; i++) {
             char c = text.charAt(i);
             if (c == quoteChar) {
                 if (firstFound) {
-                    // don't add to result, this action in effect removes consecutive characters.
+                    // The previous character was a quoteChar, don't add this to result, this action in
+                    // effect removes consecutive quotes.
                     firstFound = false;
                 } else {
+                    // found a quoteChar and the previous character was not a quoteChar, include in result.
                     firstFound = true;
                     result[newIdx++] = c;
                 }
             } else {
+                // non quoteChar encountered, include in result.
                 result[newIdx++] = c;
                 firstFound = false;
             }
